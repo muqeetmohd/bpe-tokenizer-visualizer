@@ -19,7 +19,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
   return (
     <div className="input-section">
       <div className="input-container">
-        <h2>Enter your sentence and I will tokenize it using BPE</h2>
+        <h2>Enter the sentence you want to tokenize using BPE</h2>
         
         <form onSubmit={handleSubmit} className="input-form">
           <div className="input-group">
@@ -28,7 +28,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
               id="sentence"
               value={sentence}
               onChange={(e) => setSentence(e.target.value)}
-              placeholder="Enter your sentence and I will tokenize it using BPE"
+              placeholder="Enter the sentence you want to tokenize using BPE"
               className="sentence-input"
               disabled={isLoading}
             />
