@@ -18,12 +18,12 @@ const Navbar: React.FC = () => {
       <div className="navbar-content">
         <div className="navbar-brand">
           <h1>BPE Visualizer</h1>
-          <span className="navbar-subtitle">Byte Pair Encoding Tokenizer</span>
+          <span className="navbar-subtitle">React Frontend + Java Spring Boot Backend</span>
         </div>
         <div className="navbar-links">
-          <a href="#" className="navbar-link">About</a>
+          <a href="https://github.com/muqeetmohd/bpebackend" target="_blank" rel="noopener noreferrer" className="navbar-link">Backend API</a>
           <a href="#" className="navbar-link">Docs</a>
-          <a href="https://github.com/muqeetmohd/bpe-tokenizer-visualizer" target="_blank" rel="noopener noreferrer" className="navbar-link">GitHub</a>
+          <a href="https://github.com/muqeetmohd/bpe-tokenizer-visualizer" target="_blank" rel="noopener noreferrer" className="navbar-link">Frontend</a>
           <button 
             onClick={toggleTheme}
             className="navbar-icon"
