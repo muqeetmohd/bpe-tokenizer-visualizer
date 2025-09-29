@@ -34,6 +34,7 @@ function App() {
   
     try {
       // Use the backend URL from environment variable
+      
       const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
       if (!backendUrl) {
