@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
         <div className="navbar-links">
           <a href="#" className="navbar-link">About</a>
           <a href="#" className="navbar-link">Docs</a>
-          <a href="#" className="navbar-link">GitHub</a>
+          <a href="https://github.com/muqeetmohd/bpe-tokenizer-visualizer" target="_blank" rel="noopener noreferrer" className="navbar-link">GitHub</a>
           <button 
             onClick={toggleTheme}
             className="navbar-icon"

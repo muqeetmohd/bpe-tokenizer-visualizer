@@ -33,19 +33,7 @@ function App() {
     setCurrentStep(0); // Reset to first step when running new tokenization
     
     try {
-      // Mock data for testing - replace with actual API call when backend is fixed
-      // const mockData: BPEResponse = {
-      //   steps: [
-      //     { step: 0, type: "initial", tokens: ["c", "a", "t", "</w>"], merge: null, frequencies: {"c": 1, "a": 1, "t": 1, "</w>": 1} },
-      //     { step: 1, type: "gather", tokens: ["c", "a", "t", "</w>"], merge: ["c", "a"], frequencies: {"c": 1, "a": 1, "t": 1, "</w>": 1} },
-      //     { step: 2, type: "merge", tokens: ["ca", "t", "</w>"], merge: ["c", "a"], frequencies: {"ca": 1, "t": 1, "</w>": 1} },
-      //     { step: 3, type: "gather", tokens: ["ca", "t", "</w>"], merge: ["t", "</w>"], frequencies: {"ca": 1, "t": 1, "</w>": 1} },
-      //     { step: 4, type: "merge", tokens: ["ca", "t</w>"], merge: ["t", "</w>"], frequencies: {"ca": 1, "t</w>": 1} }
-      //   ],
-      //   vocab_size: 5
-      // };
-      
-      // Uncomment this when your backend is fixed:
+
       const response = await fetch('http://localhost:8080/api/bpe', {
         method: 'POST',
         headers: {
