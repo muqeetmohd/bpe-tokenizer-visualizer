@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#1E293B" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- BPE Tokenization representation -->
+  <!-- Individual tokens -->
+  <rect x="6" y="12" width="4" height="8" rx="2" fill="#10B981"/>
+  <rect x="12" y="12" width="4" height="8" rx="2" fill="#F59E0B"/>
+  <rect x="18" y="12" width="4" height="8" rx="2" fill="#EF4444"/>
+  
+  <!-- Merge arrows -->
+  <path d="M11 8 L13 6 L15 8" stroke="#3B82F6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 8 L19 6 L21 8" stroke="#3B82F6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Merged token -->
+  <rect x="13" y="20" width="6" height="6" rx="3" fill="#8B5CF6"/>
+  
+  <!-- Plus sign in merged token -->
+  <path d="M15 22 L17 22 M16 21 L16 23" stroke="white" stroke-width="1" stroke-linecap="round"/>
+</svg>
