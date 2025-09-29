@@ -31,31 +31,35 @@ function App() {
     setIsLoading(true);
     setError(null);
     setCurrentStep(0); // Reset to first step when running new tokenization
-    
+  
     try {
-
-      const response = await fetch('http://localhost:8080/api/bpe', {
+      // Use the backend URL from environment variable
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  
+      if (!backendUrl) {
+        throw new Error('Backend URL is not set. Please check your environment variable.');
+      }
+  
+      const response = await fetch(`${backendUrl}/api/bpe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           sentence,
-          merges: numMerges
+          merges: numMerges,
         }),
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+  
       const data: BPEResponse = await response.json();
       console.log('API Response for', numMerges, 'merges:', data);
       console.log('Number of steps received:', data.steps.length);
       setBpeData(data);
-      
-      // setBpeData(mockData);
-      // setCurrentStep(0);
+  
     } catch (err) {
       console.error('Error during tokenization:', err);
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -63,6 +67,7 @@ function App() {
       setIsLoading(false);
     }
   };
+  
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
