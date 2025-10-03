@@ -60,6 +60,18 @@ function App() {
       console.log('API Response for', numMerges, 'merges:', data);
       console.log('Number of steps received:', data.steps.length);
       setBpeData(data);
+      
+      // Scroll to visualization area after tokenization completes
+      setTimeout(() => {
+        const visualizationElement = document.querySelector('.visualization-container');
+        if (visualizationElement) {
+          visualizationElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+          });
+        }
+      }, 100);
   
     } catch (err) {
       console.error('Error during tokenization:', err);

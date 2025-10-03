@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface InputSectionProps {
   onRunTokenization: (sentence: string, numMerges: number) => void;
@@ -8,6 +8,7 @@ interface InputSectionProps {
 const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoading }) => {
   const [sentence, setSentence] = useState('');
   const [numMerges, setNumMerges] = useState(10);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,6 +16,20 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
       onRunTokenization(sentence.trim(), numMerges);
     }
   };
+
+  // Show tooltip when user has entered text but hasn't run tokenization yet
+  useEffect(() => {
+    if (sentence.trim() && !isLoading) {
+      setShowTooltip(true);
+      // Hide tooltip after 5 seconds
+      const timer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowTooltip(false);
+    }
+  }, [sentence, isLoading]);
 
   return (
     <div className="input-section">
@@ -32,13 +47,28 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
               className="sentence-input"
               disabled={isLoading}
             />
-            <button
-              type="submit"
-              disabled={isLoading || !sentence.trim()}
-              className="run-button"
-            >
-              {isLoading ? 'Tokenizing...' : 'Run'}
-            </button>
+            <div className="button-container">
+              <button
+                type="submit"
+                disabled={isLoading || !sentence.trim()}
+                className="run-button"
+              >
+                {isLoading ? 'Tokenizing...' : 'Run'}
+              </button>
+              {showTooltip && (
+                <div className="tooltip">
+                  <div className="tooltip-content">
+                    <div className="tooltip-icon">🎯</div>
+                    <div className="tooltip-text">
+                      <strong>Press Run to see the tokenization process!</strong>
+                      <br />
+                      <span className="tooltip-subtext">Watch how BPE breaks down your text step by step</span>
+                    </div>
+                  </div>
+                  <div className="tooltip-arrow"></div>
+                </div>
+              )}
+            </div>
           </div>
           
           <div className="merges-input">
