@@ -47,28 +47,13 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
               className="sentence-input"
               disabled={isLoading}
             />
-            <div className="button-container">
-              <button
-                type="submit"
-                disabled={isLoading || !sentence.trim()}
-                className="run-button"
-              >
-                {isLoading ? 'Tokenizing...' : 'Run'}
-              </button>
-              {showTooltip && (
-                <div className="tooltip">
-                  <div className="tooltip-content">
-                    <div className="tooltip-icon">🎯</div>
-                    <div className="tooltip-text">
-                      <strong>Press Run to see the tokenization process!</strong>
-                      <br />
-                      <span className="tooltip-subtext">Watch how BPE breaks down your text step by step</span>
-                    </div>
-                  </div>
-                  <div className="tooltip-arrow"></div>
-                </div>
-              )}
-            </div>
+            <button
+              type="submit"
+              disabled={isLoading || !sentence.trim()}
+              className="run-button"
+            >
+              {isLoading ? 'Tokenizing...' : 'Run'}
+            </button>
           </div>
           
           <div className="merges-input">
@@ -100,6 +85,18 @@ const InputSection: React.FC<InputSectionProps> = ({ onRunTokenization, isLoadin
             />
           </div>
         </form>
+        
+        {showTooltip && (
+          <div className="input-notification">
+            <div className="notification-content">
+              <div className="notification-icon">🎯</div>
+              <div className="notification-text">
+                <strong>Press Run to see the tokenization process!</strong>
+                <span className="notification-subtext">Watch how BPE breaks down your text step by step</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
