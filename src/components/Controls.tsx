@@ -7,6 +7,7 @@ interface ControlsProps {
   isPlaying: boolean;
   canGoBack: boolean;
   canGoForward: boolean;
+  showTooltips: boolean;
 }
 
 const Controls: React.FC<ControlsProps> = ({
@@ -15,7 +16,8 @@ const Controls: React.FC<ControlsProps> = ({
   onStepForward,
   isPlaying,
   canGoBack,
-  canGoForward
+  canGoForward,
+  showTooltips
 }) => {
   return (
     <div className="controls">
@@ -30,7 +32,7 @@ const Controls: React.FC<ControlsProps> = ({
             <line x1="5" y1="19" x2="5" y2="5"/>
           </svg>
         </button>
-        <div className="control-tooltip">
+        <div className={`control-tooltip ${showTooltips ? 'show' : ''}`}>
           <div className="control-tooltip-content">
             <div className="control-tooltip-icon">⬅️</div>
             <div className="control-tooltip-text">
@@ -43,22 +45,36 @@ const Controls: React.FC<ControlsProps> = ({
         </div>
       </div>
       
-      <button
-        onClick={onPlayPause}
-        className={`control-btn play-btn ${isPlaying ? 'playing' : ''}`}
-        title={isPlaying ? 'Pause' : 'Play'}
-      >
-        {isPlaying ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="6" y="4" width="4" height="16"/>
-            <rect x="14" y="4" width="4" height="16"/>
-          </svg>
-        ) : (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="5,3 19,12 5,21 5,3"/>
-          </svg>
-        )}
-      </button>
+      <div className="control-btn-wrapper">
+        <button
+          onClick={onPlayPause}
+          className={`control-btn play-btn ${isPlaying ? 'playing' : ''}`}
+        >
+          {isPlaying ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="6" y="4" width="4" height="16"/>
+              <rect x="14" y="4" width="4" height="16"/>
+            </svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="5,3 19,12 5,21 5,3"/>
+            </svg>
+          )}
+        </button>
+        <div className={`control-tooltip ${showTooltips ? 'show' : ''}`}>
+          <div className="control-tooltip-content">
+            <div className="control-tooltip-icon">{isPlaying ? '⏸️' : '▶️'}</div>
+            <div className="control-tooltip-text">
+              <strong>{isPlaying ? 'Pause Animation' : 'Play Animation'}</strong>
+              <br />
+              <span className="control-tooltip-subtext">
+                {isPlaying ? 'Stop the automatic step progression' : 'Watch the tokenization process automatically'}
+              </span>
+            </div>
+          </div>
+          <div className="control-tooltip-arrow"></div>
+        </div>
+      </div>
       
       <div className="control-btn-wrapper">
         <button
@@ -71,7 +87,7 @@ const Controls: React.FC<ControlsProps> = ({
             <line x1="19" y1="5" x2="19" y2="19"/>
           </svg>
         </button>
-        <div className="control-tooltip">
+        <div className={`control-tooltip ${showTooltips ? 'show' : ''}`}>
           <div className="control-tooltip-content">
             <div className="control-tooltip-icon">➡️</div>
             <div className="control-tooltip-text">

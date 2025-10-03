@@ -26,6 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showVocabulary, setShowVocabulary] = useState(false);
+  const [showControlTooltips, setShowControlTooltips] = useState(false);
 
   const handleRunTokenization = async (sentence: string, numMerges: number = 10) => {
     setIsLoading(true);
@@ -61,16 +62,21 @@ function App() {
       console.log('Number of steps received:', data.steps.length);
       setBpeData(data);
       
-      // Scroll to visualization area after tokenization completes
+      // Show control tooltips and scroll to controls area after tokenization completes
       setTimeout(() => {
-        const visualizationElement = document.querySelector('.visualization-container');
-        if (visualizationElement) {
-          visualizationElement.scrollIntoView({ 
+        setShowControlTooltips(true);
+        const controlsElement = document.querySelector('.controls');
+        if (controlsElement) {
+          controlsElement.scrollIntoView({ 
             behavior: 'smooth', 
-            block: 'start',
+            block: 'center',
             inline: 'nearest'
           });
         }
+        // Hide tooltips after 8 seconds
+        setTimeout(() => {
+          setShowControlTooltips(false);
+        }, 8000);
       }, 100);
   
     } catch (err) {
@@ -146,6 +152,7 @@ function App() {
               isPlaying={isPlaying}
               canGoBack={currentStep > 0}
               canGoForward={currentStep < bpeData.steps.length - 1}
+              showTooltips={showControlTooltips}
             />
             
             <div className="main-layout">

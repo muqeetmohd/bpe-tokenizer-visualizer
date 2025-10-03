@@ -7,7 +7,7 @@ interface VisualizationProps {
 }
 
 const Visualization: React.FC<VisualizationProps> = ({ steps, currentStep }) => {
-  const [showTokenIds, setShowTokenIds] = useState(false);
+  const [showTokenIds, setShowTokenIds] = useState(true);
   const currentStepData = steps[currentStep];
 
   const getTokenClasses = (token: string, tokenIndex: number) => {
