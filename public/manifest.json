@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BPE Visualizer",
+  "name": "BPE Tokenizer Visualizer - Interactive Byte Pair Encoding Demo",
+  "description": "Watch Byte Pair Encoding (BPE) tokenization in action with beautiful animations. Enter any text and see how BPE breaks it down step by step into tokens.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1E293B",
+  "background_color": "#0F172A",
+  "categories": ["education", "developer", "utilities"],
+  "lang": "en"
 }
