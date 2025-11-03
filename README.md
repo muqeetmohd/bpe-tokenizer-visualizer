@@ -1,4 +1,4 @@
-# BPE Tokenizer Visualizer
+# BPE Tokenizer Visualizer - step by step
 
 A beautiful, animated web application that visualizes the Byte Pair Encoding (BPE) process step by step.
 
