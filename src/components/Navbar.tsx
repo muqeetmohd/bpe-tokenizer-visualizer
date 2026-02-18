@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className="navbar-links">
           <a href="https://github.com/muqeetmohd/bpebackend" target="_blank" rel="noopener noreferrer" className="navbar-link">Backend API</a>
-          <a href="#" className="navbar-link">Docs</a>
+          <button type="button" className="navbar-link navbar-link-button">Docs</button>
           <a href="https://github.com/muqeetmohd/bpe-tokenizer-visualizer" target="_blank" rel="noopener noreferrer" className="navbar-link">Frontend</a>
           <button 
             onClick={toggleTheme}

@@ -154,6 +154,13 @@ code {
   background: var(--shadow-soft);
 }
 
+.navbar-link-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
 .navbar-icon {
   background: none;
   border: none;
